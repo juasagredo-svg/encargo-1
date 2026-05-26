@@ -24,10 +24,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Ejecutar pruebas
-        run: ./mvnw test
+        run: mvn test
 
       - name: Construir proyecto
-        run: ./mvnw clean package
+        run: mvn clean package
 
       - name: Instalar Snyk
         run: npm install -g snyk
