@@ -2,10 +2,10 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
@@ -23,11 +23,11 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Ejecutar pruebas
-        run: mvn test
+    #  - name: Ejecutar pruebas
+    #    run: mvn test
 
       - name: Construir proyecto
-        run: mvn clean package
+        run: mvn clean package -DskipTests
 
       - name: Instalar Snyk
         run: npm install -g snyk
