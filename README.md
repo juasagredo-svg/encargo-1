@@ -35,6 +35,7 @@ Se utilizó Docker Compose para la orquestación de contenedores.
 
 GitHub Actions permite visualizar cada etapa del pipeline y mantener trazabilidad del proceso de integración continua.
 
+## pipeline
 
 El pipeline permite tomar decisiones objetivas en cada etapa:
 
