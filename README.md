@@ -1,4 +1,4 @@
-# encargo-2
+# encargo-3
 
 ## Descripción
 Proyecto desarrollado con Spring Boot utilizando integración y entrega continua mediante GitHub Actions.
@@ -30,6 +30,47 @@ Se implementó Snyk para el análisis de vulnerabilidades y Dependabot para la r
 ## Orquestación
 
 Se utilizó Docker Compose para la orquestación de contenedores.
+
+El pipeline realiza automáticamente:
+
+- Compilación del proyecto.
+- Construcción de la imagen Docker.
+- Escaneo de seguridad con Snyk.
+- Publicación de la imagen en Docker Hub.
+- Automatización del proceso de integración continua (CI/CD).
+
+---
+
+## Seguridad
+
+Se implementó:
+
+- Snyk para el análisis de vulnerabilidades.
+- Dependabot para la revisión automática de dependencias.
+
+---
+
+## Despliegue
+
+La aplicación fue desplegada en una instancia **Amazon EC2** utilizando **Docker Compose**.
+
+Los contenedores ejecutados son:
+
+- Aplicación Spring Boot.
+- Base de datos PostgreSQL.
+
+---
+
+## Monitoreo
+
+Se utilizó **Amazon CloudWatch** para monitorear el estado de la infraestructura.
+
+Se creó un Dashboard con métricas como:
+
+- CPU Utilization.
+- Network In.
+- Network Out.
+- Status Check.
 
 ## Trazabilidad
 
