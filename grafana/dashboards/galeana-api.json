@@ -1,0 +1,132 @@
+{
+    "annotations": {
+        "list": []
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "panels": [
+        {
+            "title": "Requests por Minuto",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "sum(rate(http_server_requests_seconds_count[5m]))",
+                    "legendFormat": "req/s",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "Latencia P95 (ms)",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[5m])) by (le))",
+                    "legendFormat": "P95",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "Errores 5xx",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "sum(rate(http_server_requests_seconds_count{status=~\"5..\"}[5m]))",
+                    "legendFormat": "5xx/s",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "Errores 4xx",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "sum(rate(http_server_requests_seconds_count{status=~\"4..\"}[5m]))",
+                    "legendFormat": "4xx/s",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "Uso de CPU (%)",
+            "type": "gauge",
+            "targets": [
+                {
+                    "expr": "system_cpu_usage * 100",
+                    "legendFormat": "CPU",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "JVM Heap Memory",
+            "type": "timeseries",
+            "targets": [
+                {
+                    "expr": "jvm_memory_used_bytes{area=\"heap\"}",
+                    "legendFormat": "Used",
+                    "refId": "A"
+                },
+                {
+                    "expr": "jvm_memory_max_bytes{area=\"heap\"}",
+                    "legendFormat": "Max",
+                    "refId": "B"
+                }
+            ]
+        },
+        {
+            "title": "Uptime del Servicio",
+            "type": "stat",
+            "targets": [
+                {
+                    "expr": "process_uptime_seconds",
+                    "legendFormat": "Uptime",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "Tiempo de Despliegue",
+            "type": "stat",
+            "targets": [
+                {
+                    "expr": "process_uptime_seconds",
+                    "legendFormat": "Uptime",
+                    "refId": "A"
+                }
+            ]
+        },
+        {
+            "title": "Cobertura de Pruebas (%)",
+            "type": "gauge",
+            "targets": [
+                {
+                    "expr": "sonarcloud_test_coverage",
+                    "legendFormat": "Coverage",
+                    "refId": "A"
+                }
+            ]
+        }
+    ],
+    "schemaVersion": 39,
+    "tags": [
+        "galeana-api",
+        "spring-boot",
+        "prometheus"
+    ],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-30m",
+        "to": "now"
+    },
+    "title": "Galeana API - Dashboard",
+    "uid": "galeana-api-dashboard",
+    "version": 1
+}
